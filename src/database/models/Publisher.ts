@@ -1,5 +1,5 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-import { Serialization } from './Serialization';
+import { Serialization, PublisherEmployee } from './';
 
 @Entity('publishers')
 export class Publisher extends BaseEntity {
@@ -15,8 +15,11 @@ export class Publisher extends BaseEntity {
   @Column('boolean', { name: 'is_active', nullable: false, default: false })
   isActive: boolean;
 
-  @OneToMany(() => Serialization, (serialization) => serialization.id, {cascade: true})
+  @OneToMany(() => Serialization, (serialization) => serialization.id, { cascade: true })
   serialization: Serialization[];
+
+  @OneToMany(() => PublisherEmployee, (publisherEmployee) => publisherEmployee.id, { cascade: true })
+  publisherEmployee: PublisherEmployee[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

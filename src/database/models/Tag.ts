@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Serialization } from './';
 
 @Entity('tags')
 export class Tag extends BaseEntity {
@@ -10,4 +11,7 @@ export class Tag extends BaseEntity {
 
   @Column('varchar', { name: 'description', nullable: false, length: 500 })
   description: string;
+
+  @ManyToMany(() => Serialization, (serialization) => serialization.id, { cascade: true })
+  serialization: Serialization[];
 }

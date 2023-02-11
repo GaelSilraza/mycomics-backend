@@ -1,6 +1,5 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-import { Publisher } from './Publisher';
-import { Format } from './Format';
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Publisher, Format, Genre, Tag, Staffer, Chapter, Rating } from './';
 
 @Entity('serializations')
 export class Serialization extends BaseEntity {
@@ -42,18 +41,36 @@ export class Serialization extends BaseEntity {
   endDate: Date;
 
   @ManyToOne(() => Publisher, (publisher) => publisher.id)
-  @JoinColumn({name: 'publisher_id'})
+  @JoinColumn({ name: 'publisher_id' })
   publisher: Publisher;
 
-  @Column('varchar', {name: 'publisher_id', nullable: false})
+  @Column('uuid', { name: 'publisher_id', nullable: false })
   publisherId: string;
 
   @ManyToOne(() => Format, (format) => format.id)
-  @JoinColumn({name: 'format_id'})
+  @JoinColumn({ name: 'format_id' })
   format: Format;
 
-  @Column('int4', {name: 'format_id', nullable: false})
+  @Column('int4', { name: 'format_id', nullable: false })
   formatId: string;
+
+  @ManyToMany(() => Genre, (genre) => genre.id, { cascade: true })
+  @JoinTable({ name: 'serializations_genres' })
+  genre: Genre[];
+
+  @ManyToMany(() => Tag, (tag) => tag.id, { cascade: true, })
+  @JoinTable({ name: 'serializations_tags' })
+  tag: Tag[];
+
+  @ManyToMany(() => Staffer, (staffer) => staffer.id, { cascade: true, })
+  @JoinTable({ name: 'serializations_staffers' })
+  staffer: Staffer[];
+
+  @OneToMany(() => Chapter, (chapter) => chapter.id, { cascade: true })
+  chapter: Chapter[];
+
+  @OneToMany(() => Rating, (rating) => rating.id, { cascade: true })
+  rating: Rating[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

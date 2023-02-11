@@ -3,5 +3,9 @@ export { Tag } from './Tag';
 export { Genre } from './Genre';
 export { Format } from './Format';
 export { Publisher } from './Publisher';
-export { Staffer } from './Staffer'
-export { Serialization } from './Serialization'
+export { Staffer } from './Staffer';
+export { Serialization } from './Serialization';
+export { PublisherEmployee } from './PublisherEmployee';
+export { Chapter } from './Chapter';
+export { ContentChapter } from './ContentChapter';
+export { Rating } from './Rating';
