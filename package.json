@@ -23,8 +23,6 @@
   },
   "scripts": {
     "dev": "nodemon --watch 'src/' --exec 'ts-node src/server.ts' -e ts",
-    "typeorm": "typeorm-ts-node-commonjs -d ./src/config/config.development.ts",
-    "migration:generate": "typeorm-ts-node-commonjs -d ./src/config/config.development.ts migration:generate ./src/database/migrations/default",
-    "migration:run": "typeorm-ts-node-commonjs -d ./src/config/config.development.ts migration:run"
+    "typeorm": "typeorm-ts-node-commonjs -d ./src/config/config.development.ts"
   }
 }

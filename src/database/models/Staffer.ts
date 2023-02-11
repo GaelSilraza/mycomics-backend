@@ -1,4 +1,5 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { BaseEntity, Column, CreateDateColumn, Entity, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Serialization } from './'
 
 @Entity('staffers')
 export class Staffer extends BaseEntity {
@@ -14,6 +15,9 @@ export class Staffer extends BaseEntity {
 
   @Column('varchar', { name: 'description', nullable: true })
   description: string;
+
+  @ManyToMany(() => Serialization, (serialization) => serialization.id, { cascade: true })
+  serialization: Serialization[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
