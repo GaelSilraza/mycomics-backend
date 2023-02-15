@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
-import UserService from './UserService';
-import { UserInterface } from '../../interfaces/';
+import FormatService from './FormatService';
+import { FormatInterface } from '../../interfaces/';
 
-class UserController {
+class FormatController {
   index = async (request: Request, response: Response) => {
     try {
-      const users = await UserService.findAll();
+      const formats = await FormatService.findAll();
 
-      return response.json(users);
+      return response.json(formats);
     } catch (error) {
       if (error instanceof Error) {
         return response.status(400).json({ message: `${error.message}` });
@@ -19,9 +19,9 @@ class UserController {
     try {
       const { id } = request.params;
 
-      const user = await UserService.findById(id);
+      const format = await FormatService.findById(id);
 
-      return response.json(user);
+      return response.json(format);
     } catch (error) {
       if (error instanceof Error) {
         return response.status(400).json({ message: `${error.message}` });
@@ -31,13 +31,11 @@ class UserController {
 
   store = async (request: Request, response: Response) => {
     try {
-      const { id, firstName, lastName, birth, email, password, isSuperUser, isActive }: UserInterface = request.body;
+      const { id, name }: FormatInterface = request.body;
 
-      const user = await UserService.create({
-        id, firstName, lastName, birth, email, password, isSuperUser: false, isActive: false
-      });
+      const format = await FormatService.create({ id, name });
 
-      return response.json(user);
+      return response.json(format);
     } catch (error) {
       if (error instanceof Error) {
         return response.status(400).json({ message: `${error.message}` });
@@ -48,11 +46,11 @@ class UserController {
   update = async (request: Request, response: Response) => {
     try {
       const { id } = request.params;
-      const { firstName, lastName, birth, email, password, isSuperUser, isActive }: UserInterface = request.body;
+      const { name }: FormatInterface = request.body;
 
-      const user = await UserService.update({ id, firstName, lastName, birth, email, password, isSuperUser, isActive });
+      const format = await FormatService.update({id, name});
 
-      return response.json(user);
+      return response.json(format);
     } catch (error) {
       if (error instanceof Error) {
         return response.status(400).json({ message: `${error.message}` });
@@ -64,9 +62,9 @@ class UserController {
     try {
       const { id } = request.params;
 
-      const user = await UserService.delete(id);
+      const format = await FormatService.delete(id);
 
-      return response.json(user);
+      return response.json(format);
     } catch (error) {
       if (error instanceof Error) {
         return response.status(400).json({ message: `${error.message}` });
@@ -75,4 +73,4 @@ class UserController {
   }
 }
 
-export default new UserController();
+export default new FormatController();

@@ -3,8 +3,8 @@ import { Serialization } from './';
 
 @Entity('genres')
 export class Genre extends BaseEntity {
-  @PrimaryGeneratedColumn('increment', { name: 'id' })
-  id: number;
+  @PrimaryGeneratedColumn('uuid', { name: 'id' })
+  id: string;
 
   @Column('varchar', { name: 'name', nullable: false, length: 150 })
   name: string;
