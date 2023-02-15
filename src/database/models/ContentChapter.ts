@@ -3,8 +3,8 @@ import { Chapter } from './';
 
 @Entity('contents_chapters')
 export class ContentChapter extends BaseEntity {
-  @PrimaryGeneratedColumn('increment', { name: 'id' })
-  id: number;
+  @PrimaryGeneratedColumn('uuid', { name: 'id' })
+  id: string;
 
   @Column('int4', { name: 'order', nullable: false })
   order: number;

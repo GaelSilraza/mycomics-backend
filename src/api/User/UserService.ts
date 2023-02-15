@@ -1,5 +1,5 @@
 import { User } from "../../database/models";
-import { UserInterface } from "../../interfaces/UserInterface";
+import { UserInterface } from "../../interfaces/";
 
 class UserService {
   findAll = async () => {
