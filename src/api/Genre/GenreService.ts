@@ -1,5 +1,5 @@
-import { Genre } from "../../database/models";
-import { GenreInterface } from "../../interfaces/";
+import { Genre } from '../../database/models';
+import { GenreInterface } from '../../interfaces/';
 
 class GenreService {
   findAll = async () => {

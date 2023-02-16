@@ -3,6 +3,7 @@ import UserController from './api/User/UserController';
 import TagController from './api/Tag/TagController';
 import FormatController from './api/Format/FormatController';
 import GenreController from './api/Genre/GenreController';
+import StafferController from './api/Staffer/StafferController';
 
 const router = express.Router();
 
@@ -29,5 +30,11 @@ router.get('/genre/:id', GenreController.show);
 router.post('/genre', GenreController.store);
 router.put('/genre/:id', GenreController.update);
 router.delete('/genre/:id', GenreController.delete);
+
+router.get('/staffer', StafferController.index);
+router.get('/staffer/:id', StafferController.show);
+router.post('/staffer', StafferController.store);
+router.put('/staffer/:id', StafferController.update);
+router.delete('/staffer/:id', StafferController.delete);
 
 export { router };

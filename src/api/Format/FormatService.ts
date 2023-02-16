@@ -1,5 +1,5 @@
-import { Format } from "../../database/models";
-import { FormatInterface } from "../../interfaces/";
+import { Format } from '../../database/models';
+import { FormatInterface } from '../../interfaces/';
 
 class FormatService {
   findAll = async () => {
