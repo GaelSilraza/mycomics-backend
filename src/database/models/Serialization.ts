@@ -42,14 +42,14 @@ export class Serialization extends BaseEntity {
 
   @ManyToOne(() => Publisher, (publisher) => publisher.id)
   @JoinColumn({ name: 'publisher_id' })
-  publisher: Publisher;
+  publisher: Publisher[];
 
-  @Column('uuid', { name: 'publisher_id', nullable: false })
+   @Column('uuid', { name: 'publisher_id', nullable: false })
   publisherId: string;
 
   @ManyToOne(() => Format, (format) => format.id)
   @JoinColumn({ name: 'format_id' })
-  format: Format;
+  format: Format[];
 
   @Column('int4', { name: 'format_id', nullable: false })
   formatId: string;

@@ -3,3 +3,8 @@ export { GenreInterface } from './GenreInterface';
 export { TagInterface } from './TagInterface';
 export { FormatInterface } from './FormatInterface';
 export { StafferInterface } from './StafferInterface';
+export { SerializationInterface } from './Serialization';
+export { ChapterInterface } from './Chapter';
+export { ContentChapterInterface } from './ContentChapter';
+export { PublisherInterface } from './Publisher';
+export { RatingInterface } from './Rating';

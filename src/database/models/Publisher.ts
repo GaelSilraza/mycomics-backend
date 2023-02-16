@@ -6,10 +6,10 @@ export class Publisher extends BaseEntity {
   @PrimaryGeneratedColumn('uuid', { name: 'id' })
   id: string;
 
-  @Column('varchar', { name: 'name', nullable: false, length: 160 })
+  @Column('varchar', { name: 'name', nullable: false, length: 160, unique: true })
   name: string;
 
-  @Column('varchar', { name: 'alias', nullable: false, length: 160 })
+  @Column('varchar', { name: 'alias', nullable: true, length: 160 })
   alias: string;
 
   @Column('boolean', { name: 'is_active', nullable: false, default: false })
