@@ -1,5 +1,5 @@
-import { Tag } from "../../database/models";
-import { TagInterface } from "../../interfaces/";
+import { Tag } from '../../database/models';
+import { TagInterface } from '../../interfaces/';
 
 class TagService {
   findAll = async () => {
