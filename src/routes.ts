@@ -4,6 +4,8 @@ import TagController from './api/Tag/TagController';
 import FormatController from './api/Format/FormatController';
 import GenreController from './api/Genre/GenreController';
 import StafferController from './api/Staffer/StafferController';
+import SerializationController from './api/Serialization/SerializationController';
+import PublisherController from './api/Publisher/PublisherController';
 
 const router = express.Router();
 
@@ -36,5 +38,17 @@ router.get('/staffer/:id', StafferController.show);
 router.post('/staffer', StafferController.store);
 router.put('/staffer/:id', StafferController.update);
 router.delete('/staffer/:id', StafferController.delete);
+
+router.get('/publisher', PublisherController.index);
+router.get('/publisher/:id', PublisherController.show);
+router.post('/publisher', PublisherController.store);
+router.put('/publisher/:id', PublisherController.update);
+router.delete('/publisher/:id', PublisherController.delete);
+
+router.get('/serialization', SerializationController.index);
+router.get('/serialization/:id', SerializationController.show);
+router.post('/serialization', SerializationController.store);
+router.put('/serialization/:id', SerializationController.update);
+router.delete('/serialization/:id', SerializationController.delete);
 
 export { router };
